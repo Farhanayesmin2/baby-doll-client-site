@@ -30,6 +30,12 @@
   ]
 - npm install react-icons --save
 
+### color code
+
+-for button:
+
+- pink #ddbbdc #text-[#c09da9] text-[#56d3c4]
+
 # For Authentication, i use in this project firebase authentication.
 
 - npm install firebase

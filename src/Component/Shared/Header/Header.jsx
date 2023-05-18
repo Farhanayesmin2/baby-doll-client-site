@@ -1,37 +1,37 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { IoFastFoodOutline, IoFastFoodSharp } from "react-icons/io5";
-
 
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
- 
-
   return (
-    <nav className=" bg-white shadow-md font-roboto">
+    <nav className=" bg-white shadow-md font-poppins">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <div className="text-2xl  text-[#774d62] hidden lg:block from-current font-roboto ">
+            <div className="text-2xl  text-[#0077b6] hidden lg:block from-current font-poppins ">
               <span className="flex justify-center h-8  items-center font-bold">
-                <IoFastFoodSharp className="flex justify-center h-8  items-center font-bold" />
+                <img
+                  src="https://img.freepik.com/premium-vector/logo-desaign-baby-doll-vector_727263-3.jpg?w=2000"
+                  className="flex justify-center h-16 animate-pulse  items-center font-bold"
+                />
+          
                 Baby Doll{" "}
               </span>
             </div>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline font-bold space-x-4">
+            <div className="ml-10 flex items-baseline font-bold space-x-4 font-poppins">
               <NavLink
                 style={({ isActive }) => {
                   return {
                     borderBottom: isActive ? "5px solid red" : "none",
-                    color: isActive ? "red" : "#774d62",
+                    color: isActive ? "red" : "#0077b6",
                   };
                 }}
                 to="/"
-                className="text-[#774d62] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
+                className="text-[#0077b6] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >
                 Home
@@ -40,50 +40,50 @@ function Header() {
                 style={({ isActive }) => {
                   return {
                     borderBottom: isActive ? "5px solid red" : "none",
-                    color: isActive ? "red" : "#774d62",
+                    color: isActive ? "red" : "#0077b6",
                   };
                 }}
                 to="/chef"
-                className="text-[#774d62] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
+                className="text-[#0077b6] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >
-               All Toys
+                All Toys
               </NavLink>
               <NavLink
                 style={({ isActive }) => {
                   return {
                     borderBottom: isActive ? "5px solid red" : "none",
-                    color: isActive ? "red" : "#774d62",
+                    color: isActive ? "red" : "#0077b6",
                   };
                 }}
                 to="/restaurant"
-                className="text-[#774d62] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
+                className="text-[#0077b6] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >
-         My Toys 
+                My Toys
               </NavLink>
               <NavLink
                 style={({ isActive }) => {
                   return {
                     borderBottom: isActive ? "5px solid red" : "none",
-                    color: isActive ? "red" : "#774d62",
+                    color: isActive ? "red" : "#0077b6",
                   };
                 }}
                 to="/restaurant"
-                className="text-[#774d62] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
+                className="text-[#0077b6] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >
-         Add A Toy
+                Add A Toy
               </NavLink>
               <NavLink
                 style={({ isActive }) => {
                   return {
                     borderBottom: isActive ? "5px solid red" : "none",
-                    color: isActive ? "red" : "#774d62",
+                    color: isActive ? "red" : "#0077b6",
                   };
                 }}
                 to="/blog"
-                className="text-[#774d62] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
+                className="text-[#0077b6] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >
                 Blog
@@ -91,45 +91,38 @@ function Header() {
             </div>
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden md:block font-poppins">
             <div className="flex items-center">
-             
-                <div className="flex justify-center items-center">
-                  <button className="btn btn-ghost btn-circle">
-                    <Link to="/profile">
-                      <div className="avatar online">
-                        <div className="w-12 h-12 rounded-full ">
-                          <abbr
-                            title=""
-                          >
-                            <div className="relative flex-shrink-0">
-                              <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border rounded-full dark:text-gray-100 dark:border-gray-900"></span>
-                              <img
-                                src=""
-                                alt=""
-                                className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-700"
-                              />
-                            </div>
-                          </abbr>
-                        </div>
+              <div className="flex justify-center items-center">
+                <button className="btn btn-ghost btn-circle">
+                  <Link to="/profile">
+                    <div className="avatar online">
+                      <div className="w-12 h-12 rounded-full ">
+                        <abbr title="">
+                          <div className="relative flex-shrink-0">
+                            <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border rounded-full dark:text-gray-100 dark:border-gray-900"></span>
+                            <img
+                              src=""
+                              alt=""
+                              className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-700"
+                            />
+                          </div>
+                        </abbr>
                       </div>
-                    </Link>
-                  </button>
-                  <Link
-                    className="py-2  mx-1 px-4 bg-[#774d62] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-                  
-                  >
-                    <button className="">LogOut</button>
+                    </div>
                   </Link>
-                </div>
-           
-                <Link
-                  className="py-2 mx-1 px-4 bg-[#774d62] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-                  to="/login"
-                >
-                  <button>Login</button>
+                </button>
+                <Link className="py-2  mx-1 px-4 bg-[#03045e] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                  <button className="">LogOut</button>
                 </Link>
-            
+              </div>
+
+              <Link
+                className="py-2 mx-1 px-4 bg-[#03045e]  text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                to="/login"
+              >
+                <button>Login</button>
+              </Link>
             </div>
           </div>
 
@@ -164,7 +157,10 @@ function Header() {
             <div class="px-4 py-6">
               <span class="grid h-10 w-[100%] place-content-center rounded-lg bg-gray-100 text-xl text-gray-600">
                 <span className="flex justify-center h-8  items-center font-bold">
-                  <IoFastFoodSharp className="flex justify-center h-8  items-center font-bold" />
+               <img
+                  src="https://img.freepik.com/premium-vector/logo-desaign-baby-doll-vector_727263-3.jpg?w=2000"
+                  className="flex justify-center h-16 animate-pulse  items-center font-bold"
+                />
                   Baby Doll{" "}
                 </span>
               </span>
@@ -174,11 +170,11 @@ function Header() {
                   style={({ isActive }) => {
                     return {
                       borderBottom: isActive ? "5px solid red" : "none",
-                      color: isActive ? "red" : "#774d62",
+                      color: isActive ? "red" : "#0077b6",
                     };
                   }}
                   to="/"
-                  className="text-[#774d62] border-b-4 border-transparent leading-[3rem] hover:border-current hover:text-red-700 active:text-red-700"
+                  className="text-[#0077b6] border-b-4 border-transparent leading-[3rem] hover:border-current hover:text-red-700 active:text-red-700"
                   activeClassName="border-current text-red-700"
                 >
                   Home
@@ -187,11 +183,11 @@ function Header() {
                   style={({ isActive }) => {
                     return {
                       borderBottom: isActive ? "5px solid red" : "none",
-                      color: isActive ? "red" : "#774d62",
+                      color: isActive ? "red" : "#0077b6",
                     };
                   }}
                   to="/chef"
-                  className="text-[#774d62] border-b-4 border-transparent leading-[3rem]  hover:border-current hover:text-red-700 active:text-red-700"
+                  className="text-[#0077b6] border-b-4 border-transparent leading-[3rem]  hover:border-current hover:text-red-700 active:text-red-700"
                   activeClassName="border-current text-red-700"
                 >
                   All Chef
@@ -200,67 +196,59 @@ function Header() {
                   style={({ isActive }) => {
                     return {
                       borderBottom: isActive ? "5px solid red" : "none",
-                      color: isActive ? "red" : "#774d62",
+                      color: isActive ? "red" : "#0077b6",
                     };
                   }}
                   to="/restaurant"
-                  className="text-[#774d62] border-b-4 border-transparent leading-[3rem]  hover:border-current hover:text-red-700 active:text-red-700"
+                  className="text-[#0077b6] border-b-4 border-transparent leading-[3rem]  hover:border-current hover:text-red-700 active:text-red-700"
                   activeClassName="border-current text-red-700"
                 >
-                 Restaurant
+                  Restaurant
                 </NavLink>
                 <NavLink
                   style={({ isActive }) => {
                     return {
                       borderBottom: isActive ? "5px solid red" : "none",
-                      color: isActive ? "red" : "#774d62",
+                      color: isActive ? "red" : "#0077b6",
                     };
                   }}
                   to="/blog"
-                  className="text-[#774d62] border-b-4 border-transparent leading-[3rem] hover:border-current hover:text-red-700 active:text-red-700"
+                  className="text-[#0077b6] border-b-4 border-transparent leading-[3rem] hover:border-current hover:text-red-700 active:text-red-700"
                   activeClassName="border-current text-red-700"
                 >
                   Blog
                 </NavLink>
 
                 <div className="flex items-center">
-            
-                    <div className="flex justify-center items-center">
-                      <button className="btn btn-ghost btn-circle">
-                        <Link to="/profile">
-                          <div className="avatar online">
-                            <div className="w-12 h-12 rounded-full ">
-                              <abbr
-                                title=""
-                              >
-                                <div className="relative flex-shrink-0">
-                                  <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border rounded-full dark:text-gray-100 dark:border-gray-900"></span>
-                                  <img
-                                  
-                                    alt=""
-                                    className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-700"
-                                  />
-                                </div>
-                              </abbr>
-                            </div>
+                  <div className="flex justify-center items-center">
+                    <button className="btn btn-ghost btn-circle">
+                      <Link to="/profile">
+                        <div className="avatar online">
+                          <div className="w-12 h-12 rounded-full ">
+                            <abbr title="">
+                              <div className="relative flex-shrink-0">
+                                <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border rounded-full dark:text-gray-100 dark:border-gray-900"></span>
+                                <img
+                                  alt=""
+                                  className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-700"
+                                />
+                              </div>
+                            </abbr>
                           </div>
-                        </Link>
-                      </button>
-                      <Link
-                        className="py-2  mx-1 px-4 bg-[#774d62] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-                      
-                      >
-                        <button className="">LogOut</button>
+                        </div>
                       </Link>
-                    </div>
-                
-                    <Link
-                      className="py-2 mx-1 px-4 bg-[#774d62] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-                      to="/login"
-                    >
-                      <button>Login</button>
+                    </button>
+                    <Link className="py-2  mx-1 px-4 bg-[#0077b6] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                      <button className="">LogOut</button>
                     </Link>
-         
+                  </div>
+
+                  <Link
+                    className="py-2 mx-1 px-4 bg-[#0077b6] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                    to="/login"
+                  >
+                    <button>Login</button>
+                  </Link>
                 </div>
               </nav>
             </div>
@@ -272,43 +260,36 @@ function Header() {
               >
                 <div className="hidden md:block">
                   <div className="flex items-center">
-                   
-                      <div className="flex justify-center items-center">
-                        <button className="btn btn-ghost btn-circle">
-                          <Link to="/profile">
-                            <div className="avatar online">
-                              <div className="w-12 h-12 rounded-full ">
-                                <abbr
-                                
-                                >
-                                  <div className="relative flex-shrink-0">
-                                    <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border rounded-full dark:text-gray-100 dark:border-gray-900"></span>
-                                    <img
-                                      src=""
-                                      alt=""
-                                      className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-700"
-                                    />
-                                  </div>
-                                </abbr>
-                              </div>
+                    <div className="flex justify-center items-center">
+                      <button className="btn btn-ghost btn-circle">
+                        <Link to="/profile">
+                          <div className="avatar online">
+                            <div className="w-12 h-12 rounded-full ">
+                              <abbr>
+                                <div className="relative flex-shrink-0">
+                                  <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border rounded-full dark:text-gray-100 dark:border-gray-900"></span>
+                                  <img
+                                    src=""
+                                    alt=""
+                                    className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-700"
+                                  />
+                                </div>
+                              </abbr>
                             </div>
-                          </Link>
-                        </button>
-                        <Link
-                          className="py-2  mx-1 px-4 bg-[#774d62] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-                          
-                        >
-                          <button className="">LogOut</button>
+                          </div>
                         </Link>
-                      </div>
-                  
-                      <Link
-                        className="py-2 mx-1 px-4 bg-[#774d62] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-                        to="/login"
-                      >
-                        <button>Login</button>
+                      </button>
+                      <Link className="py-2  mx-1 px-4 bg-[#0077b6] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                        <button className="">LogOut</button>
                       </Link>
-                   
+                    </div>
+
+                    <Link
+                      className="py-2 mx-1 px-4 bg-[#0077b6] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                      to="/login"
+                    >
+                      <button>Login</button>
+                    </Link>
                   </div>
                 </div>
               </a>

@@ -2,9 +2,8 @@
 export default {
   content: ["./index.html","./src/**/*.{js,ts,jsx,tsx}", ],
    theme: {
-   fontFamily: {
-      'roboto': ['Roboto', 'sans-serif'],
-    },
+    'sans': ['Poppins', 'sans-serif'],
+      'serif': ['Georgia', 'serif'],
     extend: {},
   },
  plugins: [
