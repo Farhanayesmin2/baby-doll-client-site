@@ -116,7 +116,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
       </Swiper>
-      <div className="px-8 py-2 shadow-sm my-2 shadow-gray-400 dark:text-gray-100">
+      <div className="px-8 py-2 shadow-sm my-2 shadow-gray-400 dark:text-gray-100 w-[100%]">
 	<div className="flex items-center mx-auto container justify-center md:justify-between py-2 animate-marquee">
 		<div>
 			<span>Get up to 50% off your first order + free shipping,&nbsp;</span>

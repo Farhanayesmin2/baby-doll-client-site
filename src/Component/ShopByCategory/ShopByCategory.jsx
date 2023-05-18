@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -6,7 +6,25 @@ import 'react-tabs/style/react-tabs.css';
 
 
 const ShopByCategory = () => {
+    const [loading, setLoading] = useState(true);
+    
     const [activeTab, setActiveTab] = useState("babyDolls");
+  const [data, setData] = useState([]);
+
+// data fetch 
+  useEffect(() => {
+    fetch("/data.json")
+      .then((res) => res.json())
+      .then((d) => {
+        setData(d);
+        setLoading(false); // set loading to false after data is fetched
+      })
+      .catch((error) => console.log(error));
+  }, []);
+     if (loading) {
+    return <div>Loading...</div>;
+  }
+    console.log(data.babyDoll)
     // Function to handle tab selection
 const handleTabSelect = (tab) => {
   setActiveTab(tab);
@@ -48,28 +66,31 @@ const handleTabSelect = (tab) => {
         <TabPanel>
 <h1 className="lg:text-4xl leading-tight font-bold sm:text-xl font-serif  text-[#c09da9]"> Baby Dolls</h1>
 
- <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-5 mx-4">
-    <div className="bg-white shadow-xl shadow-gray-400 rounded-lg overflow-hidden ">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-5 mx-4">
+                         {data.babyDoll.map((doll) => (
+        <div key={doll.id} className="bg-white shadow-xl shadow-gray-400 rounded-lg overflow-hidden ">
       <div className="flex justify-between p-2">
-        <p className="text-base font-bold">Today's Combo Offer</p>
+        <p className="text-base font-bold">Today's Best Offer</p>
         <div className="bg-info rounded-full flex items-center justify-center bg-[#c09da9]  shadow-sm w-7 h-7">
           <p className="text-white text-xs font-medium">x4</p>
         </div>
       </div>
-      <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/4.webp" className="w-full h-auto" alt="Laptop" />
+      <img src={doll.picture} alt={doll.name} className="object-cover w-96 h-96 items-center container mx-auto" />
       <div className="p-5">
-        <div className="flex justify-between">
-          <p className="text-xs"><a href="#!" className="text-gray-500">Laptops</a></p>
-          <p className="text-xs line-through text-red-500">$1099</p>
+                                     <div className="flex justify-between">
+                                         <p className="text-2xl font-bold">{doll.name }</p>
+
+          <p className="text-xs line-through text-red-500">Offer Price: $1099</p>
         </div>
         <div className="flex justify-between mb-2">
-          <h5 className="text-sm font-bold">HP Notebook</h5>
-          <h5 className="text-sm font-bold text-gray-900">$999</h5>
+          <h5 className="text-sm font-bold text-red-700">Top three Dolls</h5>
+          <h5 className="text-lg font-bold text-gray-900">Price: ${doll.price}</h5>
         </div>
         <div className="flex justify-between mb-1">
-          <p className="text-xs text-gray-500">Available: <span className="font-bold">6</span></p>
-          <div className="flex text-yellow-500">
-            <FaStar />
+          <p className="text-xs text-gray-500">Available: <span className="font-bold">8</span></p>
+                                         <div className="flex items-center font-bold text-yellow-500">
+                                             Rating: {doll.rating}
+            <FaStar  className='ml-3'/>
             <FaStar />
             <FaStar />
             <FaStar />
@@ -80,24 +101,25 @@ const handleTabSelect = (tab) => {
 
  <button type="button" className=" w-[50%] bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium  text-sm px-5  text-center mr-2 mb-2 rounded-xl  py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300">View Details </button>
         </div>
-      
-                            </div>
-
-
-
-                        
+    
+                             </div> 
+                  ))}                
   </div>
 
 
 
         </TabPanel>
         <TabPanel>
-          <h2>Sub-categories for Category 2</h2>
-          <ul>
-            <Link>Sub-category 4</Link>
-            <Link>Sub-category 5</Link>
-            <Link>Sub-category 6</Link>
-          </ul>
+           <h1>Baby Dolls</h1>
+      {data.babyDoll.map((doll) => (
+        <div key={doll.id}>
+          <img src={doll.picture} alt={doll.name} />
+          <h3>{doll.name}</h3>
+          <p>Price: ${doll.price}</p>
+          <p>Rating: {doll.rating}</p>
+          <p>{doll.description}</p>
+        </div>
+      ))}
         </TabPanel>
         <TabPanel>
           <h2>Sub-categories for Category 3</h2>
