@@ -1,13 +1,7 @@
 
 import React, { createContext, useEffect, useState } from "react";
-// import { Player } from "@lottiefiles/react-lottie-player";
-//  <Player
-//                 autoplay
-//                 speed={1.5}
-//                 loop
-//                 src="/public/11067-registration-animation.json"
-//                 className="rounded"
-//               ></Player>
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
+
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
@@ -67,13 +61,16 @@ const AuthProviders = ({ children }) => {
 
   const Spinner = () => {
   return  <div class="text-center">
-      <Player
-               autoplay
-               speed={1.5}
-               loop
-              src="/public/3649-floral-loading-animation.json"
-               className="rounded"
-             ></Player> 
+    <div className="w-full lg:w-4/5 lg:ml-auto">
+           <Player
+  autoplay
+  loop
+  src="/public/3286-bike-loading-animation.json"
+  style={{ height: '300px', width: '300px' }}
+>
+  <Controls visible={true} buttons={['play', 'repeat', 'frame', 'debug']} />
+</Player>
+            </div>
       </div>
 }
 
