@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import 'react-toastify/dist/ReactToastify.css';
+
   
 import { ToastContainer, toast } from "react-toastify";
 

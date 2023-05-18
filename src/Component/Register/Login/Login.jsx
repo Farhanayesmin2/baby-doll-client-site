@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 import { Player } from '@lottiefiles/react-lottie-player';
 import 'react-toastify/dist/ReactToastify.css';
+import GitHub from "../../Others/GitHub/GitHub";
   
 
 const Login = () => {
@@ -190,7 +191,7 @@ const Login = () => {
               Login with Google
             </button>
             <div className="mt-5 text-center">
-              
+              <GitHub></GitHub>
             </div>
             <div className="mt-5 text-xs border-b border-[#002D74] py-4 text-[#002D74]">
               <Link>Forgot your password?/</Link>
