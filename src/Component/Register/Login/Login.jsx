@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import { FcKindle } from "react-icons/fc";
 import { ToastContainer, toast } from "react-toastify";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 import { Player } from '@lottiefiles/react-lottie-player';
-
+import 'react-toastify/dist/ReactToastify.css';
+  
 
 const Login = () => {
   // State variables

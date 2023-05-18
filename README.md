@@ -42,9 +42,9 @@
   I create login and registration page and i use here in firebase for authentication.
   ### In this project i use many thing to doing responsive
   Here,
-- I use react-to-pdf,
-  -lazyload
-  -I use animation picture which from "@lottiefiles/react-lottie-player";
+-
+- install react toast 'react-toastify/dist/ReactToastify.css';
+  -I use animation picture which from @lottiefiles/react-lottie-player": "^3.5.3";
 - Spinner which from flowbite.
 - I use nodejs for server site data and i use vercel and evviorment variable.
 
