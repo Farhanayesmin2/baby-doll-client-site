@@ -60,3 +60,7 @@
 ### I create some section and component from
 
 - Tailwind Component,Meraki and so more.
+
+### For sub category section i use tabs
+
+- npm install --save react-tabs
