@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
-import { FcTabletAndroid } from "react-icons/fc";
+
 import { AuthContext } from "../Context/UserContext";
 import { Player } from '@lottiefiles/react-lottie-player';
 const Register = () => {
