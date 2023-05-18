@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Context/UserContext";
+import profile from "../../../../public/68335-doll-wait.json"
 
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+   const [isOpen, setIsOpen] = useState(false);
+
+  // this is for user and logOut
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
 
   return (
     <nav className=" bg-white shadow-md font-poppins">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <div className="text-2xl  text-[#0077b6] hidden lg:block from-current font-poppins ">
+            <div className="text-2xl  text-[#56d3c4] hidden lg:block from-current font-poppins ">
               <span className="flex justify-center h-8  items-center font-bold">
                 <img
                   src="https://img.freepik.com/premium-vector/logo-desaign-baby-doll-vector_727263-3.jpg?w=2000"
@@ -27,11 +38,11 @@ function Header() {
                 style={({ isActive }) => {
                   return {
                     borderBottom: isActive ? "5px solid red" : "none",
-                    color: isActive ? "red" : "#0077b6",
+                    color: isActive ? "#c09da9" : "#56d3c4",
                   };
                 }}
                 to="/"
-                className="text-[#0077b6] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
+                className="text-[#56d3c4] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-[#c09da9] active:text-[#c09da9]"
                 activeClassName="border-current text-red-700"
               >
                 Home
@@ -40,11 +51,11 @@ function Header() {
                 style={({ isActive }) => {
                   return {
                     borderBottom: isActive ? "5px solid red" : "none",
-                    color: isActive ? "red" : "#0077b6",
+                    color: isActive ? "#c09da9" : "#56d3c4",
                   };
                 }}
                 to="/chef"
-                className="text-[#0077b6] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
+                className="text-[#56d3c4] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >
                 All Toys
@@ -53,11 +64,11 @@ function Header() {
                 style={({ isActive }) => {
                   return {
                     borderBottom: isActive ? "5px solid red" : "none",
-                    color: isActive ? "red" : "#0077b6",
+                    color: isActive ? "#c09da9" : "#56d3c4",
                   };
                 }}
                 to="/restaurant"
-                className="text-[#0077b6] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
+                className="text-[#56d3c4] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >
                 My Toys
@@ -66,11 +77,11 @@ function Header() {
                 style={({ isActive }) => {
                   return {
                     borderBottom: isActive ? "5px solid red" : "none",
-                    color: isActive ? "red" : "#0077b6",
+                    color: isActive ? "#c09da9" : "#56d3c4",
                   };
                 }}
                 to="/restaurant"
-                className="text-[#0077b6] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
+                className="text-[#56d3c4] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >
                 Add A Toy
@@ -79,11 +90,11 @@ function Header() {
                 style={({ isActive }) => {
                   return {
                     borderBottom: isActive ? "5px solid red" : "none",
-                    color: isActive ? "red" : "#0077b6",
+                    color: isActive ? "#c09da9" : "#56d3c4",
                   };
                 }}
                 to="/blog"
-                className="text-[#0077b6] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
+                className="text-[#56d3c4] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >
                 Blog
@@ -92,17 +103,24 @@ function Header() {
           </div>
 
           <div className="hidden md:block font-poppins">
-            <div className="flex items-center">
+                      <div className="flex items-center">
+                            {user ? (
               <div className="flex justify-center items-center">
                 <button className="btn btn-ghost btn-circle">
                   <Link to="/profile">
                     <div className="avatar online">
                       <div className="w-12 h-12 rounded-full ">
-                        <abbr title="">
+                        <abbr   title={
+                                  user.displayName
+                                    ? user.displayName
+                                    : user.email
+                                }>
                           <div className="relative flex-shrink-0">
                             <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border rounded-full dark:text-gray-100 dark:border-gray-900"></span>
                             <img
-                              src=""
+                             src={`${
+                                  user.photoURL ? user.photoURL : profile
+                                }`}
                               alt=""
                               className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-700"
                             />
@@ -112,17 +130,19 @@ function Header() {
                     </div>
                   </Link>
                 </button>
-                <Link className="py-2  mx-1 px-4 bg-[#03045e] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
-                  <button className="">LogOut</button>
+                                    
+                <Link className="py-2  mx-1 px-4 bg-[#56d3c4] text-black font-semibold rounded-lg shadow-md hover:bg-[#c09da9] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                  <button  onClick={logOut} className="">LogOut</button>
                 </Link>
               </div>
-
+              ) : (
               <Link
-                className="py-2 mx-1 px-4 bg-[#03045e]  text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                className="py-2 mx-1 px-4 bg-[#56d3c4] text-black  font-semibold rounded-lg shadow-md hover:bg-[#c09da9] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
                 to="/login"
               >
                 <button>Login</button>
               </Link>
+                )}
             </div>
           </div>
 
@@ -170,11 +190,11 @@ function Header() {
                   style={({ isActive }) => {
                     return {
                       borderBottom: isActive ? "5px solid red" : "none",
-                      color: isActive ? "red" : "#0077b6",
+                      color: isActive ? "#c09da9" : "#56d3c4",
                     };
                   }}
                   to="/"
-                  className="text-[#0077b6] border-b-4 border-transparent leading-[3rem] hover:border-current hover:text-red-700 active:text-red-700"
+                  className="text-[#56d3c4] border-b-4 border-transparent leading-[3rem] hover:border-current hover:text-red-700 active:text-red-700"
                   activeClassName="border-current text-red-700"
                 >
                   Home
@@ -183,11 +203,11 @@ function Header() {
                   style={({ isActive }) => {
                     return {
                       borderBottom: isActive ? "5px solid red" : "none",
-                      color: isActive ? "red" : "#0077b6",
+                      color: isActive ? "#c09da9" : "#56d3c4",
                     };
                   }}
                   to="/chef"
-                  className="text-[#0077b6] border-b-4 border-transparent leading-[3rem]  hover:border-current hover:text-red-700 active:text-red-700"
+                  className="text-[#56d3c4] border-b-4 border-transparent leading-[3rem]  hover:border-current hover:text-red-700 active:text-red-700"
                   activeClassName="border-current text-red-700"
                 >
                   All Chef
@@ -196,11 +216,11 @@ function Header() {
                   style={({ isActive }) => {
                     return {
                       borderBottom: isActive ? "5px solid red" : "none",
-                      color: isActive ? "red" : "#0077b6",
+                      color: isActive ? "#c09da9" : "#56d3c4",
                     };
                   }}
                   to="/restaurant"
-                  className="text-[#0077b6] border-b-4 border-transparent leading-[3rem]  hover:border-current hover:text-red-700 active:text-red-700"
+                  className="text-[#56d3c4] border-b-4 border-transparent leading-[3rem]  hover:border-current hover:text-red-700 active:text-red-700"
                   activeClassName="border-current text-red-700"
                 >
                   Restaurant
@@ -209,23 +229,26 @@ function Header() {
                   style={({ isActive }) => {
                     return {
                       borderBottom: isActive ? "5px solid red" : "none",
-                      color: isActive ? "red" : "#0077b6",
+                      color: isActive ? "#c09da9" : "#56d3c4",
                     };
                   }}
                   to="/blog"
-                  className="text-[#0077b6] border-b-4 border-transparent leading-[3rem] hover:border-current hover:text-red-700 active:text-red-700"
+                  className="text-[#56d3c4] border-b-4 border-transparent leading-[3rem] hover:border-current hover:text-red-700 active:text-red-700"
                   activeClassName="border-current text-red-700"
                 >
                   Blog
                 </NavLink>
 
                 <div className="flex items-center">
+                     {user ? (
                   <div className="flex justify-center items-center">
                     <button className="btn btn-ghost btn-circle">
                       <Link to="/profile">
                         <div className="avatar online">
                           <div className="w-12 h-12 rounded-full ">
-                            <abbr title="">
+                            <abbr  title={
+                              user.displayName ? user.displayName : user.email
+                            }>
                               <div className="relative flex-shrink-0">
                                 <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border rounded-full dark:text-gray-100 dark:border-gray-900"></span>
                                 <img
@@ -238,17 +261,18 @@ function Header() {
                         </div>
                       </Link>
                     </button>
-                    <Link className="py-2  mx-1 px-4 bg-[#0077b6] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    <Link className="py-2  mx-1 px-4 bg-[#56d3c4] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
                       <button className="">LogOut</button>
                     </Link>
                   </div>
-
+                 ) : (
                   <Link
-                    className="py-2 mx-1 px-4 bg-[#0077b6] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                    className="py-2 mx-1 px-4 bg-[#56d3c4] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
                     to="/login"
                   >
                     <button>Login</button>
-                  </Link>
+                    </Link>
+                        )}
                 </div>
               </nav>
             </div>
@@ -279,13 +303,13 @@ function Header() {
                           </div>
                         </Link>
                       </button>
-                      <Link className="py-2  mx-1 px-4 bg-[#0077b6] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                      <Link className="py-2  mx-1 px-4 bg-[#56d3c4] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
                         <button className="">LogOut</button>
                       </Link>
                     </div>
 
                     <Link
-                      className="py-2 mx-1 px-4 bg-[#0077b6] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                      className="py-2 mx-1 px-4 bg-[#56d3c4] text-white font-semibold rounded-lg shadow-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
                       to="/login"
                     >
                       <button>Login</button>
