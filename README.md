@@ -39,7 +39,7 @@
 # For Authentication, i use in this project firebase authentication.
 
 - npm install firebase
-  I create some login and registration page and i use here in firebase for authentication.
+  I create login and registration page and i use here in firebase for authentication.
   ### In this project i use many thing to doing responsive
   Here,
 - I use react-to-pdf,
