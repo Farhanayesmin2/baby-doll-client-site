@@ -2,7 +2,7 @@
   "babyDoll": [
     {
       "id": "baby1",
-      "picture": "https://i.ibb.co/vj5Y7bw/a269fa40a990cc52c87b88398041a961.jpg",
+      "picture": "https://i.ibb.co/VSLpxwx/42e8c30d9b9838a32fef52f21fddbed3.jpg",
       "name": "Sweetie Pie",
       "price": 29.99,
       "rating": 4.5,
@@ -10,7 +10,7 @@
     },
     {
       "id": "baby2",
-      "picture": "https://i.ibb.co/RvrtJL0/f583abbeb23f6d3a57973268162030de.jpg",
+      "picture": "https://i.ibb.co/vvs0p5f/28ae8faef95aeabff4734b6f3e86dff2.jpg",
       "name": "Cuddly Cutie",
       "price": 39.99,
       "rating": 4.8,
@@ -54,7 +54,7 @@
   "latiYellowDolls": [
     {
       "id": "lati1",
-      "picture": "https://example.com/lati1.jpg",
+      "picture": "https://i.ibb.co/vj5Y7bw/a269fa40a990cc52c87b88398041a961.jpg",
       "name": "Sunny Sprite",
       "price": 59.99,
       "rating": 4.7,
@@ -62,7 +62,7 @@
     },
     {
       "id": "lati2",
-      "picture": "https://example.com/lati2.jpg",
+    "picture": "https://i.ibb.co/RvrtJL0/f583abbeb23f6d3a57973268162030de.jpg",
       "name": "Rosy Blossom",
       "price": 49.99,
       "rating": 4.4,
