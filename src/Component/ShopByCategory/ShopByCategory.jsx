@@ -22,7 +22,7 @@ const ShopByCategory = () => {
 
   // data fetch
   useEffect(() => {
-    fetch("/data.json")
+    fetch("http://localhost:5000/home")
       .then((res) => res.json())
       .then((d) => {
         setData(d);
@@ -111,7 +111,7 @@ const ShopByCategory = () => {
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-5 mx-4">
-            {data.babyDoll.map((doll) => (
+            {data[0].babyDoll.map((doll) => (
               <div
                 key={doll.id}
                 className="bg-white shadow-xl shadow-gray-400 rounded-lg overflow-hidden "
@@ -138,10 +138,11 @@ const ShopByCategory = () => {
                     </p>
                   </div>
                   <div className="flex justify-between mb-2">
-                    <h5 className="text-sm font-bold animate-pulse text-red-700">
-                      <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm text-red-700 ">
-                        Top
-                      </span>
+                    <h5 className="text-sm font-bold animate-pulse ">
+                                              <div className="indicator">
+  <span className="indicator-item badge badge-secondary"><h1>Baby</h1></span>
+
+</div>
                     </h5>
                     <h5 className="text-lg font-bold text-gray-900">
                       Price: ${doll.price}
@@ -282,7 +283,7 @@ const ShopByCategory = () => {
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-5 mx-4">
-            {data.barbieDolls.map((doll) => (
+            {data[0].barbieDolls.map((doll) => (
               <div
                 key={doll.id}
                 className="bg-white shadow-xl shadow-gray-400 rounded-lg overflow-hidden "
@@ -309,10 +310,11 @@ const ShopByCategory = () => {
                     </p>
                   </div>
                   <div className="flex justify-between mb-2">
-                    <h5 className="text-sm font-bold animate-pulse text-red-700">
-                      <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm text-red-700 ">
-                        Top
-                      </span>
+                    <h5 className="text-sm font-bold animate-pulse ">
+                                              <div className="indicator">
+  <span className="indicator-item badge badge-secondary"><h1>Baby</h1></span>
+
+</div>
                     </h5>
                     <h5 className="text-lg font-bold text-gray-900">
                       Price: ${doll.price}
@@ -431,6 +433,8 @@ const ShopByCategory = () => {
                   </div>
                 </div>
                 {/* Close Button */}
+
+
                 <button
                   onClick={closeModal}
                   className="absolute top-2 right-2 bg-gray-200 rounded-full p-1 text-gray-600 hover:bg-gray-300 hover:text-gray-800 focus:outline-none"
@@ -451,7 +455,7 @@ const ShopByCategory = () => {
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-5 mx-4">
-            {data.latiYellowDolls.map((doll) => (
+            {data[0].latiYellowDolls.map((doll) => (
               <div
                 key={doll.id}
                 className="bg-white shadow-xl shadow-gray-400 rounded-lg overflow-hidden "
@@ -478,10 +482,11 @@ const ShopByCategory = () => {
                     </p>
                   </div>
                   <div className="flex justify-between mb-2">
-                    <h5 className="text-sm font-bold animate-pulse text-red-700">
-                      <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm text-red-700 ">
-                        Top
-                      </span>
+                    <h5 className="text-sm font-bold animate-pulse ">
+                                              <div className="indicator">
+  <span className="indicator-item badge badge-secondary"><h1>Baby</h1></span>
+
+</div>
                     </h5>
                     <h5 className="text-lg font-bold text-gray-900">
                       Price: ${doll.price}

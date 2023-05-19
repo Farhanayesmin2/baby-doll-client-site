@@ -21,13 +21,15 @@ function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
+         
             <div className="text-2xl  text-[#56d3c4] hidden lg:block from-current font-poppins ">
+   
               <span className="flex justify-center h-8  items-center font-bold">
                 <img
                   src="https://img.freepik.com/premium-vector/logo-desaign-baby-doll-vector_727263-3.jpg?w=2000"
                   className="flex justify-center h-16 animate-pulse  items-center font-bold"
                 />
-          
+     
                 Baby Doll{" "}
               </span>
             </div>
