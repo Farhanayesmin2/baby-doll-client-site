@@ -102,7 +102,7 @@ const Register = () => {
   autoplay
   speed={1.5}
   loop
-  src="/public/112454-form-registration.json"
+  src="/112454-form-registration.json"
   className="rounded-full w-16 h-16  "
 ></Player>
             </h2>

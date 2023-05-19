@@ -90,7 +90,7 @@ const Login = () => {
   autoplay
   speed={1}
   loop
-  src="/public/3649-floral-loading-animation.json"
+  src="/3649-floral-loading-animation.json"
   className="rounded-full w-40 h-32  "
 ></Player>
             </h2>

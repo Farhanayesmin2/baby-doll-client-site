@@ -65,8 +65,8 @@ const AuthProviders = ({ children }) => {
            <Player
   autoplay
   loop
-  src="/public/3286-bike-loading-animation.json"
-  style={{ height: '300px', width: '300px' }}
+  src="/public/890-loading-animation.json"
+ className=" w-full h-full "
 >
   <Controls visible={true} buttons={['play', 'repeat', 'frame', 'debug']} />
 </Player>
@@ -74,7 +74,7 @@ const AuthProviders = ({ children }) => {
       </div>
 }
 
-
+ 
 
 
   // auth state changed
