@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AuthContext } from "../Context/UserContext";
 import { useContext } from "react";
+import PrivateRoute from "../Routes/PrivateRoute/PrivateRoute";
 
 const ShopByCategory = () => {
   const [loading, setLoading] = useState(true);
@@ -13,13 +14,21 @@ const ShopByCategory = () => {
   const [data, setData] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
 
+
+   // Router variables and functions
+  const location = useLocation();
+  const navigate = useNavigate();
+  // const from = location.state?.from?.pathname || "/";
+
   // data fetch
   useEffect(() => {
     fetch("/data.json")
       .then((res) => res.json())
       .then((d) => {
         setData(d);
+        
         setLoading(false); // set loading to false after data is fetched
+       
       })
       .catch((error) => console.log(error));
   }, []);
@@ -32,6 +41,8 @@ const ShopByCategory = () => {
   // Function to handle tab selection
   const handleTabSelect = (tab) => {
     setActiveTab(tab);
+    // // Navigate to previous page
+    //     navigate(from, { replace: true });
   };
 
   const openModal = (item) => {
@@ -151,13 +162,34 @@ const ShopByCategory = () => {
                   </div>
                 </div>
                 <div className="p-5">
-                  <Link to={`/#baby-doll/${doll.id}`}
-                    type="button"
-                    className=" w-[50%] bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium  text-sm px-5  text-center mr-2 mb-2 rounded-xl  py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
-                    onClick={() => openModal(doll)}
-                  >
-                    View Details{" "}
-                  </Link>
+                    {user?.uid ? ( <Link
+          to={`/#baby-doll/${doll.id}`}
+          type="button"
+          className="w-[50%] bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium text-sm px-5 text-center mr-2 mb-2 rounded-xl py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
+          onClick={() => openModal(doll)}
+        >
+          View Details
+        </Link> 
+         
+      ) : (
+         <Link
+          to={{
+            pathname: '/login',
+   hash: '#baby-doll',
+    state: { from: location },
+                          
+            
+                        }}
+                        replace={true}
+          type="button"
+          className="w-[50%] bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium text-sm px-5 text-center mr-2 mb-2 rounded-xl py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
+        >
+          View Details
+        </Link>
+      )}
+
+           
+                   
                 </div>
               </div>
             ))}
@@ -301,13 +333,31 @@ const ShopByCategory = () => {
                   </div>
                 </div>
                 <div className="p-5">
-                  <Link to={`/#barbie-doll/${doll.id}`}
-                    type="button"
-                    className=" w-[50%] bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium  text-sm px-5  text-center mr-2 mb-2 rounded-xl  py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
-                    onClick={() => openModal(doll)}
-                  >
-                    View Details{" "}
-                  </Link>
+                  {user?.uid ? ( <Link
+          to={`/#barbie-doll/${doll.id}`}
+          type="button"
+          className="w-[50%] bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium text-sm px-5 text-center mr-2 mb-2 rounded-xl py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
+          onClick={() => openModal(doll)}
+        >
+          View Details
+        </Link> 
+         
+      ) : (
+         <Link
+          to={{
+            pathname: '/login',
+   hash: '#barbie-doll',
+    state: { from: location },
+                          
+            
+                        }}
+                        replace={true}
+          type="button"
+          className="w-[50%] bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium text-sm px-5 text-center mr-2 mb-2 rounded-xl py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
+        >
+          View Details
+        </Link>
+      )}
                 </div>
               </div>
             ))}
@@ -452,13 +502,33 @@ const ShopByCategory = () => {
                   </div>
                 </div>
                 <div className="p-5">
-                  <Link to={`/#lati-yellow-doll/${doll.id}`}
-                    type="button"
-                    className=" w-[50%] bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium  text-sm px-5  text-center mr-2 mb-2 rounded-xl  py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
-                    onClick={() => openModal(doll)}
-                  >
-                    View Details{" "}
-                  </Link>
+ {user?.uid ? ( <Link
+        to={`/#lati-yellow-doll/${doll.id}`}
+          type="button"
+          className="w-[50%] bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium text-sm px-5 text-center mr-2 mb-2 rounded-xl py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
+          onClick={() => openModal(doll)}
+        >
+          View Details
+        </Link> 
+         
+      ) : (
+         <Link
+          to={{
+            pathname: '/login',
+   hash: '#lati-yellow-doll',
+    state: { from: location },
+                          
+            
+                        }}
+                        replace={true}
+          type="button"
+          className="w-[50%] bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium text-sm px-5 text-center mr-2 mb-2 rounded-xl py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
+        >
+          View Details
+        </Link>
+      )}
+
+                 
                 </div>
               </div>
             ))}
