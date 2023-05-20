@@ -64,3 +64,4 @@
 ### For sub category section i use tabs
 
 - npm install --save react-tabs
+- npm install sweetalert2
