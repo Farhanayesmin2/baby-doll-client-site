@@ -29,7 +29,7 @@ const Gallery = () => {
 
 
     return (
-      <div >
+      <div className='overflow-y-hidden overflow-x-hidden' >
     <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
   <div className="text-xl mb-5 font-semibold">
     <h1 className="lg:text-5xl leading-tight font-bold font-serif text-[#ddbbdc] text-center" data-aos="fade-right">

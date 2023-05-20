@@ -17,7 +17,7 @@ function Header() {
   };
 
   return (
-    <nav className=" bg-white shadow-md font-sans w-[100%]">
+    <nav className=" bg-white shadow-md font-sans w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -82,7 +82,7 @@ function Header() {
                     color: isActive ? "#c09da9" : "#56d3c4",
                   };
                 }}
-                to="/restaurant"
+                to="/addtoys"
                 className="text-[#56d3c4] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >

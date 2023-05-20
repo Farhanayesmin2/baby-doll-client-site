@@ -8,7 +8,7 @@ const Footer = () => {
     <img
       src="https://i.pinimg.com/564x/bb/3e/91/bb3e91b835e9247422c1829ea69b6153.jpg"
       alt=""
-      class="absolute inset-0 object-cover object-center  w-full h-[100%]"
+      class="absolute inset-0 object-cover object-center  w-full h-full"
     />
   </div>
 
