@@ -5,8 +5,9 @@ import "react-tabs/style/react-tabs.css";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AuthContext } from "../Context/UserContext";
 import { useContext } from "react";
-import PrivateRoute from "../Routes/PrivateRoute/PrivateRoute";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const ShopByCategory = () => {
   const [loading, setLoading] = useState(true);
   const { user, Spinner } = useContext(AuthContext);
@@ -29,6 +30,9 @@ const ShopByCategory = () => {
         
         setLoading(false); // set loading to false after data is fetched
        
+    AOS.init({
+      duration: 2000,
+    });
       })
       .catch((error) => console.log(error));
   }, []);
@@ -52,9 +56,12 @@ const ShopByCategory = () => {
   const closeModal = () => {
     setSelectedItem(null);
   };
+
+  
+
   return (
-    <div className="text-center items-center">
-      <h1 className="text-3xl font-bold leading-tight md:text-5xl font-serif  text-[#56d3c4]">
+    <div className="text-center items-center my-6" >
+      <h1 data-aos="fade-up-right"  className="text-3xl font-bold leading-tight md:text-5xl font-serif  text-[#56d3c4]">
         {" "}
         Shop By Category
       </h1>
@@ -103,14 +110,15 @@ const ShopByCategory = () => {
             </Tab>
           </TabList>
         </div>
-        {/* TabPanel for Baby Dolls */}
-        <TabPanel>
+        {/* TabPanel for Baby Dolls */}  
+   
+        <TabPanel >
           <h1 className="lg:text-4xl leading-tight font-bold sm:text-xl font-serif  text-[#c09da9]">
             {" "}
             Baby Dolls
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-5 mx-4">
+          <div  className="grid grid-cols-1 md:grid-cols-3 gap-4 my-5 mx-4">
             {data[0].babyDoll.map((doll) => (
               <div
                 key={doll.id}

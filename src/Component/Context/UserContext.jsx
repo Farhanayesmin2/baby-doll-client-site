@@ -65,7 +65,7 @@ const AuthProviders = ({ children }) => {
            <Player
   autoplay
   loop
-  src="/public/890-loading-animation.json"
+  src="/890-loading-animation.json"
  className=" w-full h-full "
 >
   <Controls visible={true} buttons={['play', 'repeat', 'frame', 'debug']} />

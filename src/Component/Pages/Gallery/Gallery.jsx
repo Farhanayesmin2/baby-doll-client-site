@@ -30,23 +30,39 @@ const Gallery = () => {
 
     return (
       <div >
-      <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
-        <div className="text-xl mb-5 font-semibold">
-         <h1 data-aos="fade-right" className=' lg:text-5xl leading-tight font-bold font-serif text-[#ddbbdc]  text-center'>Our Top Rated <span className='font-mono'>Doll</span></h1>
-         <p data-aos="fade-left"   className='text-gray-500 text-center'>Can you explore more,in our top rated doll as like as<br></br> Barbie doll,Baby doll and lati yellow doll and so more.</p>
-          </div>
-            <div data-aos-anchor-placement="top-center">
-        
-         
-        <div className="-m-1 flex flex-wrap md:-m-2 ">
-          {images.map((image, index) => (
-            <div key={index} className="flex w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-1 md:p-2">
-              <img  data-aos="slide-left" className="block mx-auto h-full object-cover object-center rounded-lg shadow-md" src={image} alt={`Gallery Image ${index + 1}`} />
+    <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
+  <div className="text-xl mb-5 font-semibold">
+    <h1 className="lg:text-5xl leading-tight font-bold font-serif text-[#ddbbdc] text-center" data-aos="fade-right">
+      Our Top Rated <span className="font-mono">Doll</span>
+    </h1>
+    <p className="text-gray-500 text-center" data-aos="fade-left">
+      Can you explore more in our top-rated dolls, such as Barbie doll, Baby doll, Lati Yellow doll, and more.
+    </p>
+  </div>
+  <div data-aos-anchor-placement="top-center">
+    <div className="-m-1 flex flex-wrap md:-m-2">
+      {images.map((image, index) => (
+        <div key={index} className="flex w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-1 md:p-2">
+          <div className="relative">
+            <img
+              className="block mx-auto h-full object-cover object-center rounded-lg shadow-md"
+              src={image}
+              alt={`Gallery Image ${index + 1}`}
+              data-aos="slide-left"
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+              <h3 className="text-white text-lg font-semibold mb-2">Shop Now</h3>
+              <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Shop Now</button>
             </div>
-          ))}
+          </div>
         </div>
-          </div>
-          </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+
+
     </div>
     );
 };

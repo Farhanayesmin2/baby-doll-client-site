@@ -56,7 +56,7 @@ function Header() {
                     color: isActive ? "#c09da9" : "#56d3c4",
                   };
                 }}
-                to="/chef"
+                to="/alltoys"
                 className="text-[#56d3c4] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >
@@ -117,8 +117,8 @@ function Header() {
                                     ? user.displayName
                                     : user.email
                                 }>
-                          <div className="relative flex-shrink-0">
-                            <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border rounded-full dark:text-gray-100 dark:border-gray-900"></span>
+                          <div className=" flex-shrink-0">
+                            {/* <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border rounded-full dark:text-gray-100 dark:border-gray-900"></span> */}
                             <img
                              src={`${
                                   user.photoURL ? user.photoURL : profile
