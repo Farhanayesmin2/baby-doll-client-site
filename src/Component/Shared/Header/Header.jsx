@@ -69,7 +69,7 @@ function Header() {
                     color: isActive ? "#c09da9" : "#56d3c4",
                   };
                 }}
-                to="/restaurant"
+                to="/mytoys"
                 className="text-[#56d3c4] border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700 active:text-red-700"
                 activeClassName="border-current text-red-700"
               >

@@ -2,14 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FaTrashAlt, FaEye, FaPlus, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import { AuthContext } from '../Context/UserContext';
+
 import { MdClose, MdShoppingCart } from 'react-icons/md';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../Context/UserContext';
 
 
 
 
-const AllToys = () => {
+const MyToys = () => {
    const [searchQuery, setSearchQuery] = useState('');
   const [toyData, setToyData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,16 +19,18 @@ const AllToys = () => {
     const { user } = useContext(AuthContext);
  
 
-  // Fetch data
   useEffect(() => {
-    fetch('http://localhost:5000/alltoys')
-      .then((res) => res.json())
-      .then((data) => {
-        setToyData(data);
-        setLoading(false);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    if (user && user.email) {
+      const email = user.email;
+      fetch(`http://localhost:5000/mytoys?email=${email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setToyData(data);
+          setLoading(false);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [user]);
 
   // Handle search input change
   const handleSearchChange = (e) => {
@@ -66,8 +69,13 @@ const AllToys = () => {
     setSelectedItem(null);
     };
    // for alert 
-   const handleDelete = (toy) => {
-     Swal.fire({
+
+
+
+
+const handleDeleteToy = (toyId) => {
+  // Ask for confirmation
+  Swal.fire({
     title: 'Confirmation',
     text: 'Are you sure you want to delete this toy?',
     icon: 'warning',
@@ -78,21 +86,33 @@ const AllToys = () => {
     cancelButtonText: 'No'
   }).then((result) => {
     if (result.isConfirmed) {
-      // Perform the delete action here
-      // You can show a toast or perform any other necessary actions
-      toast.success('Toy deleted successfully');
+      // Send DELETE request to the server
+      fetch(`http://localhost:5000/mytoys/${toyId}`, {
+        method: "DELETE",
+      })
+        .then((res) => {
+          if (res.ok) {
+            // If the deletion was successful, update the toy list by removing the deleted toy
+            setToyData(toyData.filter((toy) => toy._id !== toyId));
+           
+        // Show success alert using SweetAlert
+        Swal.fire('Success', 'Toy deleted successfully', 'success');
+      } else {
+        throw new Error('An error occurred while deleting the toy');
+      }
+        })
+        .catch((error) => {
+          console.log(error);
+          // Show error toast using react-toastify or any other notification library
+          toast.error('An error occurred while deleting the toy');
+        });
     }
   });
 };
- 
-
-
-
-
 
   return (
     <div className="container mx-auto py-5">
-      <h1 className="text-2xl font-bold mb-4">All Toys</h1>
+      <h1 className="text-2xl font-bold mb-4">My Toys</h1>
       <div className="mb-4">
         <input
           type="text"
@@ -161,10 +181,9 @@ const AllToys = () => {
                         }}
                         replace={true}
           type="button"
-          className="w-auto bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium text-sm px-5 text-center mr-2 mb-2 rounded-xl py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
+          className="w-[50%] bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium text-sm px-5 text-center mr-2 mb-2 rounded-xl py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
         >
-        <FaEye className="inline-block mr-1" />
-                 Details
+          View Details
         </Link>
       )}
 
@@ -177,7 +196,7 @@ const AllToys = () => {
       <FaPlus className="inline-block mr-1" />
       My Toy
     </button>
-                <button  onClick={() => handleDelete(toy)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">
+                <button  onClick={() => handleDeleteToy(toy._id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">
                   <FaTrashAlt className="inline-block mr-1" />
                   Delete
                 </button>
@@ -247,4 +266,4 @@ const AllToys = () => {
   );
 };
 
-export default AllToys;
+export default MyToys;
