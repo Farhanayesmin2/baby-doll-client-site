@@ -65,3 +65,4 @@
 
 - npm install --save react-tabs
 - npm install sweetalert2
+- npm react modal

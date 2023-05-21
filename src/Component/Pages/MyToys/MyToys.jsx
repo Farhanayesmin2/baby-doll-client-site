@@ -62,7 +62,8 @@ const handleSubmit = (event) => {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
-          setIsLoading(false);  // stop loading
+        setIsLoading(false);  // stop loading
+          toast.success("Data updated successfully!");  // display success toast
     })
     .catch((error) => {
         console.error('Error:', error);
@@ -76,7 +77,7 @@ const handleSubmit = (event) => {
   useEffect(() => {
     if (user && user.email) {
       const email = user.email;
-      fetch(`http://localhost:5000/mytoys?email=${email}`)
+      fetch(`https://baby-doll-server.vercel.app/mytoys?email=${email}`)
         .then((res) => res.json())
         .then((data) => {
           setToyData(data);

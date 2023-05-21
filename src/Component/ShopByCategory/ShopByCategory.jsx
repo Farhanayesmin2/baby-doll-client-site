@@ -24,7 +24,7 @@ const ShopByCategory = () => {
 
   // data fetch
   useEffect(() => {
-    fetch("http://localhost:5000/home")
+    fetch("https://baby-doll-server.vercel.app/home")
       .then((res) => res.json())
       .then((d) => {
         setData(d);

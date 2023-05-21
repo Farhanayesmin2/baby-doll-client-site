@@ -31,7 +31,7 @@ const handleAddToys = (event) => {
   };
 
     
-  fetch("http://localhost:5000/alltoys", {
+  fetch("https://baby-doll-server.vercel.app/alltoys", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

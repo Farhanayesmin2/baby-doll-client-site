@@ -6,7 +6,7 @@ import {
   FaStar,
   FaStarHalfAlt,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../Context/UserContext";
 import { MdClose, MdShoppingCart } from "react-icons/md";
@@ -20,13 +20,16 @@ const AllToys = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const { user,Spinner } = useContext(AuthContext);
 
-
+//const location = useLocation();
+    const navigate = useNavigate();
+  // location.state.from will be the location object passed in the previous Link component
+  console.log(location);
 
     
     
   // Fetch data
   useEffect(() => {
-    fetch("http://localhost:5000/alltoys")
+    fetch("https://baby-doll-server.vercel.app/alltoys")
       .then((res) => res.json())
       .then((data) => {
         setToyData(data);
@@ -64,7 +67,8 @@ const AllToys = () => {
 
   // for modal
   const openModal = (item) => {
-    setSelectedItem(item);
+      setSelectedItem(item);
+  
   };
 
   const closeModal = () => {
@@ -157,20 +161,20 @@ const AllToys = () => {
                     Details
                   </Link>
                 ) : (
-                  <Link
-                    to={{
-                      pathname: "/login",
-                      state: { from: location },
-                    }}
-                    replace={true}
+                  <button
+                  onClick={navigate(`/login`)}
                     type="button"
                     className="w-auto bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium text-sm px-5 text-center mr-2 mb-2 rounded-xl py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
                   >
                     <FaEye className="inline-block mr-1" />
                     Details
-                  </Link>
+                  </button>
                 )}
-
+   {/* to={{
+                      pathname: "/login",
+                      state: { from: location },
+                    }}
+                    replace={true} */}
                 <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2">
                   <FaPlus className="inline-block mr-1" />
                   My Toy
