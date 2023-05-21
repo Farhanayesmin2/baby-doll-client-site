@@ -18,7 +18,7 @@ const AllToys = () => {
   const [loading, setLoading] = useState(true);
   const [showToast, setShowToast] = useState(true);
   const [selectedItem, setSelectedItem] = useState(null);
-  const { user } = useContext(AuthContext);
+  const { user,Spinner } = useContext(AuthContext);
 
 
 
@@ -89,6 +89,13 @@ const AllToys = () => {
       }
     });
   };
+
+
+
+    
+    if (loading) {
+        return Spinner();
+    }
 
   return (
     <div className="container mx-auto py-5">

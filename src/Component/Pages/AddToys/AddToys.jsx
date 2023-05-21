@@ -192,7 +192,7 @@ const handleAddToys = (event) => {
                 <td>
                   <input
                     id="price"
-                    type="text"
+                    type="number"
                     placeholder="Price"
                     className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-yellow-400 dark:border-gray-700 dark:text-gray-900"
                   />
@@ -207,7 +207,7 @@ const handleAddToys = (event) => {
                 <td>
                   <select
                     id="rating"
-                    type="text"
+                    type="number"
                     className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-yellow-400 dark:border-gray-700 dark:text-gray-900"
                   >
                     <option value="1">1</option>
@@ -227,7 +227,7 @@ const handleAddToys = (event) => {
                 <td>
                   <input
                     id="quantity"
-                    type="text"
+                    type="number"
                     placeholder="Available Quantity"
                     className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-yellow-400 dark:border-gray-700 dark:text-gray-900"
                   />

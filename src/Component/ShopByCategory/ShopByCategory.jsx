@@ -203,60 +203,79 @@ const ShopByCategory = () => {
             {/* Modal for baby dolls */}
 
                
-     {selectedItem && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 p-4 overflow-x-hidden overflow-y-auto">
-    <div className="card  text-left w-full md:w-[80%] sm:w-[60%] xl:w-[50%] 2xl:w-[40%] bg-base-100 shadow-xl">
-      {/* Close Button */}
-      <div className="flex justify-end">
-        <span onClick={closeModal} className="bg-red-700 cursor-pointer p-2 text-white rounded-full hover:bg-purple-700">
-          <MdClose size={24} />
-        </span>
-      </div>
-      <div className="card-body">
-        <div className=" flex lg:flex-grow-0 md:flex-col-reverse">
-          {/* Image */}
-          <div className="object-cover w-[100vh] sm:w-2/5">
-            <img src={selectedItem.picture} alt={selectedItem.name} className="object-cover h-64 w-full md:h-auto" />
-          </div>
-          {/* Details */}
-          <div className="md:w-1/2 p-4 md:p-6 sm:flex sm:flex-col sm:justify-between">
-            <h2 className="text-xl font-semibold mb-2">{selectedItem.name}</h2>
-            <p className="text-gray-600 mb-2">
-              Seller: {user.displayName ? user.displayName : selectedItem.seller}
-            </p>
-            <p className="text-gray-600 mb-2">
-              Email: {user.email ? user.email : selectedItem.email}
-            </p>
-            <p className="text-gray-600 mb-2">Price: ${selectedItem.price}</p>
-            <div className="flex items-center mb-2">
-              <div className="flex items-center mb-2">
-                <p className="text-gray-600">Rating: {selectedItem.rating}</p>
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <FaStar
-                    key={i}
-                    className={`text-yellow-500 ${
-                      selectedItem.rating >= i ? "fill-current" : "fill-current text-gray-300 hidden"
-                    }`}
+      {selectedItem && (
+        <div className="text-start fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 p-4 overflow-x-hidden overflow-y-auto">
+          <div className="card w-full md:w-[80%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%] bg-base-100 shadow-xl">
+            {/* Close Button */}
+            <div className="flex justify-end">
+              <span
+                onClick={closeModal}
+                className="bg-red-700 cursor-pointer p-2 text-white rounded-full hover:bg-purple-700"
+              >
+                <MdClose size={24} />
+              </span>
+                      </div>
+                      
+            <div className="card-body">
+              <div className="md:flex">
+                {/* Image */}
+                <div className="md:w-1/2">
+                  <img
+                    src={selectedItem.picture}
+                    alt={selectedItem.name}
+                    className="object-cover h-64 w-full md:h-auto"
                   />
-                ))}
-                {selectedItem.rating % 1 !== 0 && (
-                  <FaStarHalfAlt className="text-yellow-500 fill-current" />
-                )}
+                </div>
+                {/* Details */}
+                <div className="md:w-1/2 p-4 md:p-6">
+                  <h2 className="text-xl font-semibold mb-2">
+                    {selectedItem.name}
+                  </h2>
+                  <p className="text-gray-600 mb-2">
+                    Seller:{" "}
+                    {user.displayName ? user.displayName : selectedItem.seller}
+                  </p>
+                  <p className="text-gray-600 mb-2">
+                    Email: {user.email ? user.email : selectedItem.email}
+                  </p>
+                  <p className="text-gray-600 mb-2">
+                    Price: ${selectedItem.price}
+                  </p>
+                  <div className="flex items-center mb-2">
+                    <div className="flex items-center mb-2">
+                      <p className="text-gray-600">
+                        Rating: {selectedItem.rating}
+                      </p>
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <FaStar
+                          key={i}
+                          className={`text-yellow-500 ${
+                            selectedItem.rating >= i
+                              ? "fill-current"
+                              : "fill-current text-gray-300 hidden"
+                          }`}
+                        />
+                      ))}
+                      {selectedItem.rating % 1 !== 0 && (
+                        <FaStarHalfAlt className="text-yellow-500 fill-current" />
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-gray-600 mb-2">
+                    Available Quantity: {selectedItem.availableQuantity}
+                  </p>
+                  <p className="text-gray-600">{selectedItem.description}</p>
+                  <div className="mt-4">
+                    <button className="btn btn-primary">
+                      Shop Now <MdShoppingCart size={24} />
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-            <p className="text-gray-600 mb-2">Available Quantity: {selectedItem.availableQuantity}</p>
-            <p className="text-gray-600 flex sm:flex-wrap">{selectedItem.description}</p>
-            <div className="mt-4">
-              <button className="btn btn-primary">
-                Shop Now <MdShoppingCart size={24} />
-              </button>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-)}
+      )}
           </div>
         </TabPanel>
       {/* This tab for barbie dolls */}

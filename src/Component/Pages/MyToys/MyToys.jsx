@@ -20,39 +20,56 @@ const MyToys = () => {
   const [loading, setLoading] = useState(true);
   const [showToast, setShowToast] = useState(true);
   const [selectedItem, setSelectedItem] = useState(null);
-//   const [isModalOpen, setIsModalOpen] = useState(false);
+const [isLoading, setIsLoading] = useState(false);
 
-  const { user } = useContext(AuthContext);
 
-//  for update 
-      const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { user ,Spinner} = useContext(AuthContext);
+    
+    
+ // State for the modal, form fields, and the toy to be updated
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [price, setPrice] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [availableQuantity, setQuantity] = useState('');
   const [description, setDescription] = useState('');
+    const [toyId, setToyId] = useState(null);
+    
+    // Open the modal and prepare to update the given toy
+  const openModals = (toy) => {
+    setModalIsOpen(true);
+    setToyId(toy._id);
+    setPrice(toy.price);
+    setQuantity(toy.quantity);
+    setDescription(toy.description);
+  };
+const closeModals = () => {
+    setModalIsOpen(false);
+  };
+
 const handleSubmit = (event) => {
-    event.preventDefault();
-   // form data
-  const data = { price, quantity, description };
+  event.preventDefault();
+   setIsLoading(true);  // start loading
+  // form data
+  const data = { price, availableQuantity, description };
 
-  // send data to server
-  fetch('http://your-server-url/update', {
-    method: 'POST', // or 'PUT'
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log('Success:', data);
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
+    // send data to server
+    fetch(`http://localhost:5000/mytoys/${toyId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+          setIsLoading(false);  // stop loading
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+          setIsLoading(false);  // stop loading
+    });
 
-  setModalIsOpen(false);
-
-    console.log(price, quantity, description);
+    setModalIsOpen(false);
   };
 
     
@@ -140,15 +157,11 @@ const handleSubmit = (event) => {
           });
       }
     });
-  };
-//   const openModalUpdate = (toys) => {
-//     setIsModalOpen(true);
-//     setSelectedItemUpdate(toys);
-//   };
-
-//   const closeModalUpdate = () => {
-//     setIsModalOpen(false);
-//   };
+    };
+    
+    if (loading) {
+        return Spinner();
+    }
 
   // Set the app element
   Modal.setAppElement(document.getElementById("root")); 
@@ -228,7 +241,7 @@ const handleSubmit = (event) => {
                 )}
 
                       <button
-                          onClick={() => setModalIsOpen(true)}
+                        onClick={() => openModals(toy)}
                         //   to={`/mytoys/${toy._id}`}
                 //   onClick={() => openModalUpdate(toy._id)}
                   className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2"
@@ -260,7 +273,8 @@ const handleSubmit = (event) => {
               >
                 <MdClose size={24} />
               </span>
-            </div>
+                      </div>
+                      
             <div className="card-body">
               <div className="md:flex">
                 {/* Image */}
@@ -321,35 +335,51 @@ const handleSubmit = (event) => {
           </div>
         </div>
       )}
-      <Modal 
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-      >
-        <h2>Update Form</h2>
-        <form onSubmit={handleSubmit}>
-          <input 
-            type="text" 
-            value={price} 
-            onChange={e => setPrice(e.target.value)} 
-            placeholder="Price"
-          />
-          <input 
-            type="text" 
-            value={quantity} 
-            onChange={e => setQuantity(e.target.value)} 
-            placeholder="Quantity"
-          />
-          <input 
-            type="text" 
-            value={description} 
-            onChange={e => setDescription(e.target.value)} 
-            placeholder="Description"
-          />
-          <button type="submit">Submit</button>
-        </form>
-        <button onClick={() => setModalIsOpen(false)}>Close</button>
-      </Modal>
+         <Modal 
+  isOpen={modalIsOpen}
+  onRequestClose={closeModals}
+  className="flex items-center justify-center outline-none"  
+  overlayClassName="fixed inset-0 bg-black bg-opacity-50" // semi-transparent black overlay
+>
+  <div className="relative bg-white rounded-lg px-6 py-4 w-full max-w-xl mx-auto"> 
+    <button 
+      onClick={closeModals}
+      className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full hover:bg-red-700 focus:outline-none"
+    >
+      <MdClose size={24} />
+    </button>
 
+    <h2 className="text-2xl font-semibold mb-4">Update Form</h2>
+
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <input 
+        type="number" 
+        value={price} 
+        onChange={e => setPrice(e.target.value)} 
+        placeholder="Price"
+        className="w-full border rounded p-2"
+      />
+      <input 
+        type="number" 
+        value={availableQuantity} 
+        onChange={e => setQuantity(e.target.value)} 
+        placeholder="Quantity"
+        className="w-full border rounded p-2"
+      />
+      <input 
+        type="text" 
+        value={description} 
+        onChange={e => setDescription(e.target.value)} 
+        placeholder="Description"
+        className="w-full border rounded p-2"
+      />
+      <button type="submit" className="w-full bg-pink-500 text-white p-2 rounded hover:bg-blue-600">
+        {isLoading ? 'Loading...' : 'Submit'}
+      </button>
+    </form>
+
+  </div>
+</Modal>
       <ToastContainer />
     </div>
   );
