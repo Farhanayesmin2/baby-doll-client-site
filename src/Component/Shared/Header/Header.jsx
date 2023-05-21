@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
-import profile from "../../../../public/68335-doll-wait.json"
+import profile from "../../../image/Whatsapp-Dp-Princess-Cute-Doll-Images4.jpg"
 
 
 function Header() {

@@ -104,11 +104,7 @@ const ShopByCategory = () => {
                 Lati Yellow Dolls
               </Link>
             </Tab>
-            <Tab>
-              <a className="inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500">
-                Disabled
-              </a>
-            </Tab>
+           
           </TabList>
         </div>
         {/* TabPanel for Baby Dolls */}  
