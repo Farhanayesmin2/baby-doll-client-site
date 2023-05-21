@@ -6,11 +6,12 @@ import {
   FaStar,
   FaStarHalfAlt,
 } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../Context/UserContext";
 import { MdClose, MdShoppingCart } from "react-icons/md";
 import Swal from "sweetalert2";
+
 
 const AllToys = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,13 +21,13 @@ const AllToys = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const { user,Spinner } = useContext(AuthContext);
 
-//const location = useLocation();
-    const navigate = useNavigate();
-  // location.state.from will be the location object passed in the previous Link component
-  console.log(location);
 
-    
-    
+
+  const location = useLocation();
+  const  froms  = location.state || { from: { pathname: "/alltoys" } };
+
+
+
   // Fetch data
   useEffect(() => {
     fetch("https://baby-doll-server.vercel.app/alltoys")
@@ -161,16 +162,23 @@ const AllToys = () => {
                     Details
                   </Link>
                 ) : (
-                  <button
-                  onClick={navigate(`/login`)}
+
+                 <Link             
+                            //    <button onClick={handleLogin}>Login</button>
+                  to={{ 
+                      pathname: "/login",
+                      state: { froms: location },
+                    }}
+                    replace={true}
                     type="button"
                     className="w-auto bg-gradient-to-r from-[#56d3c4] via-pink-100 to-[#56d3c4] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-[#774d62] dark:focus:ring-pink-800 shadow-lg shadow-[#774d62] dark:shadow-lg dark:shadow-pink-800/80 font-medium text-sm px-5 text-center mr-2 mb-2 rounded-xl py-2 hover:scale-105 duration-300 rounded-xl text-black py-2 hover:scale-105 duration-300"
                   >
                     <FaEye className="inline-block mr-1" />
                     Details
-                  </button>
+                  </Link>
+
                 )}
-   {/* to={{
+   {/*   to={{ 
                       pathname: "/login",
                       state: { from: location },
                     }}
